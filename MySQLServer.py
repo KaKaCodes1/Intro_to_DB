@@ -1,5 +1,5 @@
 import mysql.connector
-from mysql.connector import Error
+# from mysql.connector import Error
 import getpass
 def connect_to_server():
     try:
@@ -17,7 +17,7 @@ def connect_to_server():
             print("Connection is successful") 
             return myconnection, host, user, password
         
-    except Error as e:
+    except mysql.connector.Error as e:
         print(e)
         return None
 
@@ -30,7 +30,8 @@ def createDB(myconnection):
         mycursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
         print(f"Database '{db_name}' created successfully!")
         return db_name
-    except Error as e:
+    
+    except mysql.connector.Error as e:
         if "database exists" in str(e).lower():
             print(f"Failure in creation of the database: {db_name} already exists")
         print(f"Failure in creation of the database: {e}")
@@ -50,7 +51,7 @@ def connectToDB(host, user, password, db_name):
             print(f"Connection to the database '{db_name}' successful") 
             return myconnection  
     
-    except Error as e:
+    except mysql.connector.Error as e:
         print(f"Connection to the database '{db_name}' unsuccessful: {e}")
         return None
     
