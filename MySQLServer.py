@@ -24,10 +24,10 @@ def connect_to_server():
 
 def createDB(myconnection):
     mycursor = myconnection.cursor()
-    db_name = input("Enter the database name you want to create/use: ")
+    db_name = "alx_book_store"
 
     try:
-        mycursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_name}")
+        mycursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
         print(f"Database '{db_name}' created successfully!")
         return db_name
     except Error as e:
@@ -47,11 +47,11 @@ def connectToDB(host, user, password, db_name):
         )
 
         if myconnection.is_connected():
-            print(f"Connection to the database '{db_name} successful") 
+            print(f"Connection to the database '{db_name}' successful") 
             return myconnection  
     
     except Error as e:
-        print(f"Connection to the database '{db_name} unsuccessful: {e}")
+        print(f"Connection to the database '{db_name}' unsuccessful: {e}")
         return None
     
 
