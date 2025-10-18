@@ -27,7 +27,7 @@ def createDB(myconnection):
     db_name = input("Enter the database name you want to create/use: ")
 
     try:
-        mycursor.execute(f"CREATE DATABASE {db_name}")
+        mycursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_name}")
         print(f"Database '{db_name}' created successfully!")
         return db_name
     except Error as e:
